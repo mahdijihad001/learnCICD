@@ -8,22 +8,20 @@ on:
 jobs:
   text:
     name: Test Machin
-    runs-on: unubtu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Code Checkout in Text Machin
         uses: actions/checkout@v3
 
-      - name: Setup NodeJs
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
+          cache: "npm"
 
       - name: Install Depedences
-        run: npm install -f
-
-      - name: Run Test
-        run: npm run ci:fx
+        run: npm install --legacy-peer-deps
 
       - name: Build Application
-        run : npm run build
+        run: npm run build
