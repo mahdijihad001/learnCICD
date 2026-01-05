@@ -1,0 +1,29 @@
+name: Travis Lerning Management System
+
+on:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  text:
+    name: Test Machin
+    runs-on: unubtu-latest
+
+    steps:
+      - name: Code Checkout in Text Machin
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Depedences
+        run: npm install -f
+
+      - name: Run Test
+        run: npm run ci:fx
+
+      - name: Build Application
+        run : npm run build
